@@ -1,0 +1,16 @@
+{
+  "name": "air-quality",
+  "version": "1.0.0",
+  "description": "App for users to search for the air quality in their cities",
+  "main": "index.js",
+  "scripts": {
+    "test": "moch ./test/**/*.spec.js"
+  },
+  "keywords": [
+    "airquality",
+    "air",
+    "quality"
+  ],
+  "author": "Samuel Ndara <ndarasam@gmail.com>",
+  "license": "ISC"
+}
