@@ -1,0 +1,25 @@
+.container {
+  display: grid;
+  grid-template-rows: auto;
+
+  .photo-item {
+    margin-top: 0 !important;
+    height: 50vh;
+    background: url("../../assets/india.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    background-size: cover;
+    color: #ffffff;
+    .hero-title {
+      padding-top: 8%;
+    }
+    .by {
+
+    }
+  }
+
+  .search-item {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    margin-top: 15px;
+  }
+}
