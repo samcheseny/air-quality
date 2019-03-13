@@ -1,10 +1,10 @@
 <template>
     <div id="app">
-        <div id="nav">
-            <router-link to="/">Home</router-link>
-            |
-            <router-link to="/about">About</router-link>
-        </div>
+        <!--<div id="nav">-->
+            <!--<router-link to="/">Home</router-link>-->
+            <!--|-->
+            <!--<router-link to="/about">About</router-link>-->
+        <!--</div>-->
         <router-view/>
     </div>
 </template>
@@ -13,6 +13,9 @@
     body {
         margin: 0 !important;
         background-color: rgb(246, 249, 252)!important;
+        min-height: 100% !important;
+        display: flex;
+        flex-direction: column;
     }
 
     #app {

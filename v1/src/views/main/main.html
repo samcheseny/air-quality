@@ -1,48 +1,156 @@
 <div class="container">
 
-    <nav class="navbar-item">The Nav bar</nav>
+    <header>
+        <nav class="navbar">
 
-    <div class="photo-item">
+            <ul class="navbar-container">
+
+                <li class="navbar-item">
+
+                    <a :href="englishData['article-info_1_category_url']" target="_blank">
+                        {{englishData["article-info_1_category"]}}
+                    </a>
+
+                </li>
+
+            </ul>
+
+        </nav>
+    </header>
+
+    <div class="photo">
 
         <h1 class="hero-title">{{englishData.hero_1_title}}</h1>
         <h4 class="by">{{englishData["article-info_1_byline"]}}</h4>
 
     </div>
 
-    <div class="search-item">
+    <div class="cities">
 
-        <div class="city-container">
-            <div class="city-info">something</div>
-        </div>
+        <aside class="city-container">
 
-        <div class="city-container">
-            <div class="city-info">something</div>
-        </div>
+            <select name="" id="" v-model="selectedCity" @change="pickACity(selectedCity)">
 
-        <div class="city-container">
-            <div class="city-info">something</div>
-        </div>
+                <option value="" disabled selected>{{englishData['compare-tabs_1_title']}}</option>
+                <option v-for="city in getCities" :value="city">{{city.name}}</option>
 
-        <div class="city-container">
-            <div class="city-info">something</div>
-        </div>
+            </select>
 
-        <div class="city-container">
-            <div class="city-info">something</div>
-        </div>
+            <!--<label>-->
+            <!--<input type="text" class="search-input" :placeholder="englishData['compare-tabs_1_title']">-->
+            <!--</label>-->
+            <!--englishData["compare-tabs_1_city_1_name"]-->
+            <!--{{englishData["compare-tabs_1_city_1_aqi"]}}-->
 
-        <div class="city-container">
-            <div class="city-info">something</div>
+            <div class="city">
+
+                <div class="city-info">
+
+                    <h3>{{selectedCity.name}}</h3>
+                    <div class="baseline"></div>
+
+                    <ul class="cigarettes">
+
+                        <li v-for="index in selectedCity.cigarettes">
+
+                            <img alt="Cigarette"
+                                 class="cigarette-icon"
+                                 width="17"
+                                 height="55"
+                                 src="../../assets/cigarette_icon.png">
+
+                        </li>
+
+                        <!--<li>-->
+
+                            <!--<img alt="Cigarette"-->
+                                 <!--class="cigarette-icon"-->
+                                 <!--width="17"-->
+                                 <!--height="55"-->
+                                 <!--src="../../assets/cigarette_icon.png">-->
+
+                        <!--</li>-->
+
+                    </ul>
+
+                    <div class="baseline"></div>
+
+                    <div class="pm2-container">
+
+                        <div class="pm2">
+
+                            <strong>
+                                {{selectedCity.pmi}}
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </aside>
+
+        <div class="city-content">
+
+            <p class="city-content-story">
+                {{englishData.p_1_value}}
+            </p>
+
+            <p class="city-content-story">
+                {{englishData.p_2_value}}
+            </p>
+
+            <p class="city-content-story">
+                {{englishData.p_3_value}}
+            </p>
+
+            <p class="city-content-story">
+                {{englishData.p_4_value}}
+            </p>
+
+            <p class="city-content-story">
+
+                {{englishData.p_5_value}}
+                <br>
+                <small>
+                    <strong>*{{englishData["compare-tabs_1_method"]}}</strong>
+                </small>
+
+            </p>
+
         </div>
 
     </div>
 
-    <div class="content-item">
+    <div class="content">
+
+        <h3 class="content-story">
+            {{englishData.p_6_value}}
+        </h3>
+
+        <p class="content-story">
+            {{englishData.p_7_value}}
+        </p>
+
+        <p class="content-story">
+            {{englishData.p_8_value}}
+        </p>
+
+        <p class="content-story">
+            {{englishData.p_9_value}}
+        </p>
+
+        <p class="content-story">
+            {{englishData.p_10_value}}
+        </p>
 
     </div>
 
-    <footer class="footer-item">
-        @Copyright 2018
+    <footer class="footer">
+        @Copyright {{new Date().getFullYear()}}
     </footer>
 
 </div>
