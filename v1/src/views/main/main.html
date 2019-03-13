@@ -1,27 +1,41 @@
 <div class="container">
 
     <header>
+
         <nav class="navbar">
 
             <ul class="navbar-container">
 
                 <li class="navbar-item">
 
-                    <a :href="englishData['article-info_1_category_url']" target="_blank">
-                        {{englishData["article-info_1_category"]}}
+                    <a :href="story['article-info_1_category_url']" target="_blank">
+                        {{story["article-info_1_category"]}}
                     </a>
+
+                </li>
+
+                <li class="navbar-item select-language">
+
+                    <select @change="changeTheLanguage($event)">
+
+                        <option value="eng" selected>English</option>
+                        <option value="hin">Hindi</option>
+
+                    </select>
 
                 </li>
 
             </ul>
 
         </nav>
+
     </header>
 
     <div class="photo">
 
-        <h1 class="hero-title">{{englishData.hero_1_title}}</h1>
-        <h4 class="by">{{englishData["article-info_1_byline"]}}</h4>
+        <h1 class="hero-title">{{story.hero_1_title}}</h1>
+        <h4>{{story["article-info_1_byline"]}}</h4>
+        <small>{{story["article-info_1_date"]}}</small>
 
     </div>
 
@@ -29,18 +43,12 @@
 
         <aside class="city-container">
 
-            <select name="" id="" v-model="selectedCity" @change="pickACity(selectedCity)">
+            <select name="" id="" v-model="selectedCity">
 
-                <option value="" disabled selected>{{englishData['compare-tabs_1_title']}}</option>
+                <option value="" disabled selected>{{story['compare-tabs_1_title']}}</option>
                 <option v-for="city in getCities" :value="city">{{city.name}}</option>
 
             </select>
-
-            <!--<label>-->
-            <!--<input type="text" class="search-input" :placeholder="englishData['compare-tabs_1_title']">-->
-            <!--</label>-->
-            <!--englishData["compare-tabs_1_city_1_name"]-->
-            <!--{{englishData["compare-tabs_1_city_1_aqi"]}}-->
 
             <div class="city">
 
@@ -57,33 +65,32 @@
                                  class="cigarette-icon"
                                  width="17"
                                  height="55"
-                                 src="../../assets/cigarette_icon.png">
+                                 src="../../assets/images/cigarette_icon.png">
 
                         </li>
 
-                        <!--<li>-->
-
-                            <!--<img alt="Cigarette"-->
-                                 <!--class="cigarette-icon"-->
-                                 <!--width="17"-->
-                                 <!--height="55"-->
-                                 <!--src="../../assets/cigarette_icon.png">-->
-
-                        <!--</li>-->
-
                     </ul>
 
-                    <div class="baseline"></div>
+                    <div v-if="selectedCity.cigarettes>0" class="baseline"></div>
 
                     <div class="pm2-container">
 
-                        <div class="pm2">
-
-                            <strong>
-                                {{selectedCity.pmi}}
-                            </strong>
-
+                        <div class="donut-chart chart3" style="--pmi:45;" data-test="25">
+                            <div class="quad one"></div>
+                            <div class="quad two"></div>
+                            <div class="quad three"></div>
+                            <div class="quad four"></div>
+                            <div class="quad top"></div>
+                            <div class="chart-center"></div>
                         </div>
+
+                        <!--<div class="pm2">-->
+
+                        <!--<strong>-->
+                        <!--{{selectedCity.pmi}}-->
+                        <!--</strong>-->
+
+                        <!--</div>-->
 
                     </div>
 
@@ -96,27 +103,27 @@
         <div class="city-content">
 
             <p class="city-content-story">
-                {{englishData.p_1_value}}
+                {{story.p_1_value}}
             </p>
 
             <p class="city-content-story">
-                {{englishData.p_2_value}}
+                {{story.p_2_value}}
             </p>
 
             <p class="city-content-story">
-                {{englishData.p_3_value}}
+                {{story.p_3_value}}
             </p>
 
             <p class="city-content-story">
-                {{englishData.p_4_value}}
+                {{story.p_4_value}}
             </p>
 
             <p class="city-content-story">
 
-                {{englishData.p_5_value}}
+                {{story.p_5_value}}
                 <br>
                 <small>
-                    <strong>*{{englishData["compare-tabs_1_method"]}}</strong>
+                    <strong>*{{story["compare-tabs_1_method"]}}</strong>
                 </small>
 
             </p>
@@ -128,23 +135,23 @@
     <div class="content">
 
         <h3 class="content-story">
-            {{englishData.p_6_value}}
+            {{story.p_6_value}}
         </h3>
 
         <p class="content-story">
-            {{englishData.p_7_value}}
+            {{story.p_7_value}}
         </p>
 
         <p class="content-story">
-            {{englishData.p_8_value}}
+            {{story.p_8_value}}
         </p>
 
         <p class="content-story">
-            {{englishData.p_9_value}}
+            {{story.p_9_value}}
         </p>
 
         <p class="content-story">
-            {{englishData.p_10_value}}
+            {{story.p_10_value}}
         </p>
 
     </div>
@@ -154,3 +161,10 @@
     </footer>
 
 </div>
+
+<!--Todo:-->
+<!--1.PM2.Chart-->
+<!--2.Use image from URL not downloaded (Probably lazy load it)-->
+<!--3.Performance - Small file size, Fast loading-->
+<!--4.IE11-->
+<!--5.Move to vanilla js - Set up webpack to handle SCSS. Babel to convert to ES2015-->

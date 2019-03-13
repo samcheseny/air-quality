@@ -1,17 +1,37 @@
-import json from '../../data/english';
+import english from '../../data/english';
+import hindi from '../../data/hindi';
 
 export default {
     name: 'Main',
     data() {
         return {
-            englishData: json,
-            selectedCity: {}
+            story: english,
+            selectedCity: {
+                name: english["compare-tabs_1_city_3_name"],
+                cigarettes: parseInt(english["compare-tabs_1_city_3_cigg"]),
+                pmi: english["compare-tabs_1_city_3_aqi"]
+            }
         }
     },
     methods: {
-        pickACity(city, event) {
-            console.log(city.name);
-            console.log(city.cigarettes);
+        changeTheLanguage(event) {
+
+            if (event.target.value === "eng") {
+                this.story = english;
+                this.selectedCity = {
+                    name: english["compare-tabs_1_city_3_name"],
+                    cigarettes: parseInt(english["compare-tabs_1_city_3_cigg"]),
+                    pmi: english["compare-tabs_1_city_3_aqi"]
+                };
+            } else {
+                this.story = hindi;
+                this.selectedCity = {
+                    name: hindi["compare-tabs_1_city_3_name"],
+                    cigarettes: parseInt(hindi["compare-tabs_1_city_3_cigg"]),
+                    pmi: hindi["compare-tabs_1_city_3_aqi"]
+                };
+            }
+
         }
     },
     props: {},
@@ -20,12 +40,12 @@ export default {
 
             let cities = [];
 
-            for (let i = 1; i <= parseInt(this.englishData.total_cities_1_value); i++) {
+            for (let i = 1; i <= parseInt(this.story.total_cities_1_value); i++) {
 
                 let city = {
-                    name: this.englishData[`compare-tabs_1_city_${i}_name`],
-                    cigarettes: parseInt(this.englishData[`compare-tabs_1_city_${i}_cigg`]),
-                    pmi: this.englishData[`compare-tabs_1_city_${i}_aqi`]
+                    name: this.story[`compare-tabs_1_city_${i}_name`],
+                    cigarettes: parseInt(this.story[`compare-tabs_1_city_${i}_cigg`]),
+                    pmi: this.story[`compare-tabs_1_city_${i}_aqi`]
                 };
 
                 cities.push(city);
@@ -34,8 +54,5 @@ export default {
             return cities;
 
         }
-    },
-    mounted() {
-
     }
 }

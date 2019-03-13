@@ -1,3 +1,6 @@
+@import "../../assets/sass/media-queries-mixin";
+@import "../../assets/sass/donut-chart-mixin";
+
 .container {
   display: flex;
   flex-direction: column;
@@ -5,6 +8,7 @@
   justify-content: space-between;
   padding: 0;
 
+  //Header and it's children elements
   header {
     position: fixed;
     top: 0px;
@@ -12,35 +16,57 @@
     z-index: 100;
     transition: background 150ms ease 0s, top 400ms ease 0s;
     border-bottom: 1px solid rgba(76, 87, 102, 0.1);
-  }
 
-  .navbar {
-    margin-top: -16px;
-    height: 45px;
-    padding-top: 10px;
-    background: rgb(255, 255, 255);
-    border-bottom: 1px solid rgba(76, 87, 102, 0.1);
-    box-shadow: rgba(50, 50, 93, 0.1) 0 7px 14px, rgba(0, 0, 0, 0.08) 0 3px 6px;
+    .navbar {
+      margin-top: -16px;
+      height: 45px;
+      padding-top: 10px;
+      background: rgb(255, 255, 255);
+      border-bottom: 1px solid rgba(76, 87, 102, 0.1);
+      box-shadow: rgba(50, 50, 93, 0.1) 0 7px 14px, rgba(0, 0, 0, 0.08) 0 3px 6px;
 
-    .navbar-container {
-      display: flex;
-      list-style: none !important;
-    }
+      .navbar-container {
+        display: flex;
+        list-style: none !important;
 
-    a {
-      font-weight: bold;
-      text-decoration: none !important;
-      color: #2c3e50;
-      &.router-link-exact-active {
-        color: #42b983;
+        a {
+          font-weight: bold;
+          text-decoration: none !important;
+          color: #2c3e50;
+          &.router-link-exact-active {
+            color: #42b983;
+          }
+        }
+
+        .select-language{
+          margin-left: auto;
+          padding-right: 15px;
+
+          select {
+            height: 25px;
+            //margin-top: 20px;
+            border-color: rgb(207, 215, 223);
+            border-radius: 2px;
+            width: 100%;
+          }
+
+          @include for-phone-only {
+            padding-right: 10px;
+          }
+
+        }
+
       }
+
     }
+
   }
 
+  //Photo section and it's children members
   .photo {
     margin-top: 0 !important;
     height: 50vh;
-    background: url("../../assets/india.jpg") no-repeat center center fixed;
+    background: url("../../assets/images/india.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
     background-size: cover;
     color: #ffffff;
@@ -49,18 +75,17 @@
       padding-top: 8%;
     }
 
-    .by {
-
+    @include for-phone-only {
+      height: auto;
     }
 
   }
 
+  //Cities section and all it's children elements
   .cities {
     display: grid;
     min-height: 50vh;
     grid-template-columns: 33% auto;
-    //margin-top: 15px;
-    //background-color: #40507d;
     background-color: #fafafa;
     color: #373d43;
 
@@ -73,18 +98,102 @@
         border-radius: 2px;
         width: 90%;
         box-shadow: rgba(50, 50, 93, 0.1) 0 7px 14px, rgba(0, 0, 0, 0.08) 0 3px 6px;
-        //width: 200px;
+
+        @include for-phone-only {
+          width: 92%;
+        }
+
       }
 
-    }
+      .city {
+        background-color: #ffffff;
+        margin: 5%;
+        padding: 1px 10px;
+        border-radius: 2px;
+        min-height: 40%;
+        box-shadow: rgba(50, 50, 93, 0.1) 0 7px 14px, rgba(0, 0, 0, 0.08) 0 3px 6px;
 
-    .city {
-      background-color: #ffffff;
-      margin: 5%;
-      padding: 1px 10px;
-      border-radius: 2px;
-      min-height: 40%;
-      box-shadow: rgba(50, 50, 93, 0.1) 0 7px 14px, rgba(0, 0, 0, 0.08) 0 3px 6px;
+        .city-info {
+
+          ul {
+            list-style: none !important;
+            display: flex;
+            padding-inline-start: 13px;
+
+            li {
+              margin-right: 15px;
+            }
+
+          }
+
+          .baseline {
+            width: 100%;
+            height: 1px;
+            left: 0;
+            bottom: 0;
+            margin-top: -15px;
+            background-color: rgb(207, 215, 223);
+            transition: background-color 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) 0s;
+          }
+
+          h3 {
+            text-align: left;
+          }
+
+          hr {
+            margin-top: -20px;
+          }
+
+          .cigarettes {
+            display: inline-block;
+            li {
+              display: inline-block;
+              float: left;
+              white-space: nowrap;
+
+              .cigarette-icon {
+                transform: rotate(-35deg);
+              }
+
+            }
+
+          }
+
+          .pm2-container {
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+
+            @include donut-chart('chart3', 35, 150px, 10px, 1.5s, #e1e1e1, #fff, #353535);
+
+            .pm2 {
+              border-radius: 50%;
+              height: 100px;
+              width: 100px;
+              border: 3px solid rgb(82, 95, 127);
+
+              strong {
+                display: block;
+                margin-top: 42%;
+                font-size: 15px;
+              }
+
+            }
+
+          }
+
+        }
+
+        @include for-phone-only {
+          margin: 4%;
+        }
+
+      }
+
+      @include for-phone-only {
+        grid-row: 2/3;
+      }
+
     }
 
     .city-content {
@@ -92,79 +201,36 @@
       background-color: #ffffff;
       margin: 20px;
       border-radius: 2px;
-      box-shadow: rgba(50, 50, 93, 0.1) 0px 7px 14px, rgba(0, 0, 0, 0.08) 0 3px 6px;
-    }
+      box-shadow: rgba(50, 50, 93, 0.1) 0 7px 14px, rgba(0, 0, 0, 0.08) 0 3px 6px;
 
-    .city-content-story {
-      text-align: left;
-    }
-
-    .city-info {
-      //position: relative;
-
-      ul {
-        list-style: none !important;
-        display: flex;
-        padding-inline-start: 13px;
-
-        li {
-          margin-right: 15px;
-        }
+      p:first-child::first-letter {
+        font-weight: bold;
+        font-size: x-large;
       }
 
-      .baseline {
-        width: 100%;
-        height: 1px;
-        left: 0px;
-        bottom: 0px;
-        margin-top: -15px;
-        background-color: rgb(207, 215, 223);
-        transition: background-color 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) 0s;
-      }
-
-      h3 {
+      .city-content-story {
         text-align: left;
       }
 
-      hr {
-        margin-top: -20px;
-      }
+    }
 
-      .cigarette-icon {
-        transform: rotate(-35deg);
-      }
-
-      .pm2-container {
-        display: flex;
-        justify-content: center;
-        padding: 10px;
-
-        .pm2 {
-          border-radius: 50%;
-          height: 100px;
-          width: 100px;
-          border: 3px solid rgb(82, 95, 127);
-
-          strong{
-            display: block;
-            margin-top: 42%;
-            font-size: 15px;
-          }
-
-        }
-
-      }
-
+    @include for-phone-only {
+      grid-template-columns: auto;
+      grid-template-rows: auto;
     }
 
   }
 
+  //Content section and all it's children elements
   .content {
-
     padding: 30px;
     color: #373d43;
     background-color: #fafafa;
-    //background-color: #ffffff;
+
+    .content-story:nth-child(2)::first-letter {
+      font-weight: bold;
+      font-size: x-large;
+    }
 
     .content-story {
       text-align: left;
@@ -172,6 +238,7 @@
 
   }
 
+  //Footer section
   .footer {
     color: #ffffff;
     background-color: #2c3e50;
@@ -181,14 +248,3 @@
   }
 
 }
-
-//Media Queries
-@media screen and (max-width: 768px) {
-
-  .cities {
-    display: block;
-    grid-template-columns: none;
-  }
-
-}
-
