@@ -75,22 +75,7 @@
 
                     <div class="pm2-container">
 
-                        <div class="donut-chart chart3" style="--pmi:45;" data-test="25">
-                            <div class="quad one"></div>
-                            <div class="quad two"></div>
-                            <div class="quad three"></div>
-                            <div class="quad four"></div>
-                            <div class="quad top"></div>
-                            <div class="chart-center"></div>
-                        </div>
-
-                        <!--<div class="pm2">-->
-
-                        <!--<strong>-->
-                        <!--{{selectedCity.pmi}}-->
-                        <!--</strong>-->
-
-                        <!--</div>-->
+                        <chart :city="selectedCity"></chart>
 
                     </div>
 
@@ -163,8 +148,8 @@
 </div>
 
 <!--Todo:-->
-<!--1.PM2.Chart-->
 <!--2.Use image from URL not downloaded (Probably lazy load it)-->
+
 <!--3.Performance - Small file size, Fast loading-->
 <!--4.IE11-->
 <!--5.Move to vanilla js - Set up webpack to handle SCSS. Babel to convert to ES2015-->

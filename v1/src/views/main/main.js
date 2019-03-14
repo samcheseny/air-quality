@@ -1,15 +1,20 @@
 import english from '../../data/english';
 import hindi from '../../data/hindi';
+import Chart from '../../components/Chart';
 
 export default {
     name: 'Main',
+    components: {
+        Chart
+    },
     data() {
         return {
             story: english,
             selectedCity: {
                 name: english["compare-tabs_1_city_3_name"],
                 cigarettes: parseInt(english["compare-tabs_1_city_3_cigg"]),
-                pmi: english["compare-tabs_1_city_3_aqi"]
+                pmi: english["compare-tabs_1_city_3_aqi"],
+                aqi: parseInt(english["compare-tabs_1_city_3_aqi"])
             }
         }
     },
@@ -18,17 +23,33 @@ export default {
 
             if (event.target.value === "eng") {
                 this.story = english;
-                this.selectedCity = {
-                    name: english["compare-tabs_1_city_3_name"],
-                    cigarettes: parseInt(english["compare-tabs_1_city_3_cigg"]),
-                    pmi: english["compare-tabs_1_city_3_aqi"]
+                // this.selectedCity = {
+                //     name: english["compare-tabs_1_city_3_name"],
+                //     cigarettes: parseInt(english["compare-tabs_1_city_3_cigg"]),
+                //     pmi: english["compare-tabs_1_city_3_aqi"],
+                //     aqi: parseInt(english["compare-tabs_1_city_3_aqi"])
+                // };
+
+                this.selectedCity ={
+                    name: this.selectedCity.name,
+                    cigarettes: parseInt(this.selectedCity.cigarettes),
+                    pmi: this.selectedCity.pmi,
+                    aqi:this.selectedCity.aqi
                 };
+
             } else {
                 this.story = hindi;
-                this.selectedCity = {
-                    name: hindi["compare-tabs_1_city_3_name"],
-                    cigarettes: parseInt(hindi["compare-tabs_1_city_3_cigg"]),
-                    pmi: hindi["compare-tabs_1_city_3_aqi"]
+                // this.selectedCity = {
+                //     name: hindi["compare-tabs_1_city_3_name"],
+                //     cigarettes: parseInt(hindi["compare-tabs_1_city_3_cigg"]),
+                //     pmi: hindi["compare-tabs_1_city_3_aqi"],
+                //     aqi: parseInt(english["compare-tabs_1_city_3_aqi"])
+                // };
+                this.selectedCity ={
+                    name: this.selectedCity.name,
+                    cigarettes: parseInt(this.selectedCity.cigarettes),
+                    pmi: this.selectedCity.pmi,
+                    aqi:this.selectedCity.aqi
                 };
             }
 
@@ -45,7 +66,8 @@ export default {
                 let city = {
                     name: this.story[`compare-tabs_1_city_${i}_name`],
                     cigarettes: parseInt(this.story[`compare-tabs_1_city_${i}_cigg`]),
-                    pmi: this.story[`compare-tabs_1_city_${i}_aqi`]
+                    pmi: this.story[`compare-tabs_1_city_${i}_aqi`],
+                    aqi: parseInt(this.story[`compare-tabs_1_city_${i}_aqi`])
                 };
 
                 cities.push(city);

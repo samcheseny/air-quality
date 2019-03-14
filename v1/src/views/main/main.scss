@@ -1,5 +1,4 @@
 @import "../../assets/sass/media-queries-mixin";
-@import "../../assets/sass/donut-chart-mixin";
 
 .container {
   display: flex;
@@ -48,6 +47,7 @@
             border-color: rgb(207, 215, 223);
             border-radius: 2px;
             width: 100%;
+            background-color: #ffffff;
           }
 
           @include for-phone-only {
@@ -94,6 +94,7 @@
       select {
         height: 35px;
         margin-top: 20px;
+        background-color: #ffffff;
         border-color: transparent;
         border-radius: 2px;
         width: 90%;
@@ -163,8 +164,6 @@
             display: flex;
             justify-content: center;
             padding: 10px;
-
-            @include donut-chart('chart3', 35, 150px, 10px, 1.5s, #e1e1e1, #fff, #353535);
 
             .pm2 {
               border-radius: 50%;
