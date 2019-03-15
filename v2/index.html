@@ -7,6 +7,155 @@
 </head>
 <body>
 
+<div class="container">
+
+    <header>
+
+        <nav class="navbar">
+
+            <ul class="navbar-container">
+
+                <li class="navbar-item">
+
+                    <a :href="story['article-info_1_category_url']" target="_blank">
+                        {{story["article-info_1_category"]}}
+                    </a>
+
+                </li>
+
+                <li class="navbar-item select-language">
+
+                    <select @change="changeTheLanguage($event)">
+
+                        <option value="eng" selected>English</option>
+                        <option value="hin">Hindi</option>
+
+                    </select>
+
+                </li>
+
+            </ul>
+
+        </nav>
+
+    </header>
+
+    <div class="photo">
+
+        <h1 class="hero-title">{{story.hero_1_title}}</h1>
+        <h4>{{story["article-info_1_byline"]}}</h4>
+        <small>{{story["article-info_1_date"]}}</small>
+
+    </div>
+
+    <div class="cities">
+
+        <aside class="city-container">
+
+            <select name="" id="" v-model="selectedCity">
+
+                <option value="" disabled selected>{{story['compare-tabs_1_title']}}</option>
+                <option v-for="city in getCities" :value="city">{{city.name}}</option>
+
+            </select>
+
+            <div class="city">
+
+                <div class="city-info">
+
+                    <h3>{{selectedCity.name}}</h3>
+                    <div class="baseline"></div>
+
+                    <ul class="cigarettes">
+
+                        <li v-for="index in selectedCity.cigarettes">
+
+                            <img alt="Cigarette"
+                                 class="cigarette-icon"
+                                 width="17"
+                                 height="55"
+                                 src="/assets/images/cigarette_icon.png">
+
+                        </li>
+
+                    </ul>
+
+                    <div v-if="selectedCity.cigarettes>0" class="baseline"></div>
+
+                    <div class="pm2-container">
+
+                        <canvas id="doughnutCanvas"></canvas>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </aside>
+
+        <div class="city-content">
+
+            <p class="city-content-story">
+                {{story.p_1_value}}
+            </p>
+
+            <p class="city-content-story">
+                {{story.p_2_value}}
+            </p>
+
+            <p class="city-content-story">
+                {{story.p_3_value}}
+            </p>
+
+            <p class="city-content-story">
+                {{story.p_4_value}}
+            </p>
+
+            <p class="city-content-story">
+
+                {{story.p_5_value}}
+                <br>
+                <small>
+                    <strong>*{{story["compare-tabs_1_method"]}}</strong>
+                </small>
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="content">
+
+        <h3 class="content-story">
+            {{story.p_6_value}}
+        </h3>
+
+        <p class="content-story">
+            {{story.p_7_value}}
+        </p>
+
+        <p class="content-story">
+            {{story.p_8_value}}
+        </p>
+
+        <p class="content-story">
+            {{story.p_9_value}}
+        </p>
+
+        <p class="content-story">
+            {{story.p_10_value}}
+        </p>
+
+    </div>
+
+    <footer class="footer">
+        @Copyright {{new Date().getFullYear()}}
+    </footer>
+
+</div>
+
 <script src="dist/app.js"></script>
 
 </body>
