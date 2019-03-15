@@ -4,7 +4,10 @@
   "description": "App for users to search for the air quality in their cities",
   "main": "index.js",
   "scripts": {
-    "test": "moch ./test/**/*.spec.js"
+    "test": "mocha ./test/**/*.spec.js",
+    "build": "webpack",
+    "watch": "npm run build -- --watch",
+    "production": "NODE_ENV=production webpack"
   },
   "keywords": [
     "airquality",
@@ -12,5 +15,19 @@
     "quality"
   ],
   "author": "Samuel Ndara <ndarasam@gmail.com>",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
+    "babel-loader": "^8.0.5",
+    "css-loader": "^2.1.1",
+    "mini-css-extract-plugin": "^0.5.0",
+    "node-sass": "^4.11.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.1",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "uglifyjs-webpack-plugin": "^2.1.2",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.2.3"
+  }
 }

@@ -22,35 +22,27 @@ export default {
         changeTheLanguage(event) {
 
             if (event.target.value === "eng") {
-                this.story = english;
-                // this.selectedCity = {
-                //     name: english["compare-tabs_1_city_3_name"],
-                //     cigarettes: parseInt(english["compare-tabs_1_city_3_cigg"]),
-                //     pmi: english["compare-tabs_1_city_3_aqi"],
-                //     aqi: parseInt(english["compare-tabs_1_city_3_aqi"])
-                // };
 
-                this.selectedCity ={
-                    name: this.selectedCity.name,
-                    cigarettes: parseInt(this.selectedCity.cigarettes),
-                    pmi: this.selectedCity.pmi,
-                    aqi:this.selectedCity.aqi
+                this.story = english;
+
+                this.selectedCity = {
+                    name: english["compare-tabs_1_city_3_name"],
+                    cigarettes: parseInt(english["compare-tabs_1_city_3_cigg"]),
+                    pmi: english["compare-tabs_1_city_3_aqi"],
+                    aqi: parseInt(english["compare-tabs_1_city_3_aqi"])
                 };
 
             } else {
+
                 this.story = hindi;
-                // this.selectedCity = {
-                //     name: hindi["compare-tabs_1_city_3_name"],
-                //     cigarettes: parseInt(hindi["compare-tabs_1_city_3_cigg"]),
-                //     pmi: hindi["compare-tabs_1_city_3_aqi"],
-                //     aqi: parseInt(english["compare-tabs_1_city_3_aqi"])
-                // };
-                this.selectedCity ={
-                    name: this.selectedCity.name,
-                    cigarettes: parseInt(this.selectedCity.cigarettes),
-                    pmi: this.selectedCity.pmi,
-                    aqi:this.selectedCity.aqi
+
+                this.selectedCity = {
+                    name: hindi["compare-tabs_1_city_3_name"],
+                    cigarettes: parseInt(hindi["compare-tabs_1_city_3_cigg"]),
+                    pmi: hindi["compare-tabs_1_city_3_aqi"],
+                    aqi: parseInt(english["compare-tabs_1_city_3_aqi"])
                 };
+
             }
 
         }
