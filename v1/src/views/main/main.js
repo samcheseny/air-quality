@@ -9,7 +9,7 @@ export default {
     },
     data() {
         return {
-            story: english,
+            article: english,
             selectedCity: {
                 name: english["compare-tabs_1_city_3_name"],
                 cigarettes: parseInt(english["compare-tabs_1_city_3_cigg"]),
@@ -23,7 +23,7 @@ export default {
 
             if (event.target.value === "eng") {
 
-                this.story = english;
+                this.article = english;
 
                 this.selectedCity = {
                     name: english["compare-tabs_1_city_3_name"],
@@ -34,7 +34,7 @@ export default {
 
             } else {
 
-                this.story = hindi;
+                this.article = hindi;
 
                 this.selectedCity = {
                     name: hindi["compare-tabs_1_city_3_name"],
@@ -53,13 +53,13 @@ export default {
 
             let cities = [];
 
-            for (let i = 1; i <= parseInt(this.story.total_cities_1_value); i++) {
+            for (let i = 1; i <= parseInt(this.article.total_cities_1_value); i++) {
 
                 let city = {
-                    name: this.story[`compare-tabs_1_city_${i}_name`],
-                    cigarettes: parseInt(this.story[`compare-tabs_1_city_${i}_cigg`]),
-                    pmi: this.story[`compare-tabs_1_city_${i}_aqi`],
-                    aqi: parseInt(this.story[`compare-tabs_1_city_${i}_aqi`])
+                    name: this.article[`compare-tabs_1_city_${i}_name`],
+                    cigarettes: parseInt(this.article[`compare-tabs_1_city_${i}_cigg`]),
+                    pmi: this.article[`compare-tabs_1_city_${i}_aqi`],
+                    aqi: parseInt(this.article[`compare-tabs_1_city_${i}_aqi`])
                 };
 
                 cities.push(city);

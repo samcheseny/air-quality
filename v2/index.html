@@ -17,15 +17,15 @@
 
                 <li class="navbar-item">
 
-                    <a :href="story['article-info_1_category_url']" target="_blank">
-                        {{story["article-info_1_category"]}}
+                    <a target="_blank" id="country-link">
+
                     </a>
 
                 </li>
 
                 <li class="navbar-item select-language">
 
-                    <select @change="changeTheLanguage($event)">
+                    <select id="language-dropdown">
 
                         <option value="eng" selected>English</option>
                         <option value="hin">Hindi</option>
@@ -42,9 +42,9 @@
 
     <div class="photo">
 
-        <h1 class="hero-title">{{story.hero_1_title}}</h1>
-        <h4>{{story["article-info_1_byline"]}}</h4>
-        <small>{{story["article-info_1_date"]}}</small>
+        <h1 class="hero-title" id="hero-title"></h1>
+        <h4 id="byline"></h4>
+        <small id="article-date"></small>
 
     </div>
 
@@ -52,35 +52,22 @@
 
         <aside class="city-container">
 
-            <select name="" id="" v-model="selectedCity">
-
-                <option value="" disabled selected>{{story['compare-tabs_1_title']}}</option>
-                <option v-for="city in getCities" :value="city">{{city.name}}</option>
-
+            <select name="" id="city-picker">
+                <option value="" disabled selected></option>
             </select>
 
             <div class="city">
 
                 <div class="city-info">
 
-                    <h3>{{selectedCity.name}}</h3>
+                    <h3></h3>
                     <div class="baseline"></div>
 
-                    <ul class="cigarettes">
-
-                        <li v-for="index in selectedCity.cigarettes">
-
-                            <img alt="Cigarette"
-                                 class="cigarette-icon"
-                                 width="17"
-                                 height="55"
-                                 src="/assets/images/cigarette_icon.png">
-
-                        </li>
+                    <ul class="cigarettes" id="cigarettes">
 
                     </ul>
 
-                    <div v-if="selectedCity.cigarettes>0" class="baseline"></div>
+                    <div class="baseline"></div>
 
                     <div class="pm2-container">
 
@@ -96,28 +83,19 @@
 
         <div class="city-content">
 
-            <p class="city-content-story">
-                {{story.p_1_value}}
-            </p>
+            <p class="city-content-story" id="p-1"></p>
 
-            <p class="city-content-story">
-                {{story.p_2_value}}
-            </p>
+            <p class="city-content-story" id="p-2"></p>
 
-            <p class="city-content-story">
-                {{story.p_3_value}}
-            </p>
+            <p class="city-content-story" id="p-3"></p>
 
-            <p class="city-content-story">
-                {{story.p_4_value}}
-            </p>
+            <p class="city-content-story" id="p-4"></p>
 
-            <p class="city-content-story">
+            <p class="city-content-story" id="p-5">
 
-                {{story.p_5_value}}
                 <br>
                 <small>
-                    <strong>*{{story["compare-tabs_1_method"]}}</strong>
+                    <strong></strong>
                 </small>
 
             </p>
@@ -128,30 +106,20 @@
 
     <div class="content">
 
-        <h3 class="content-story">
-            {{story.p_6_value}}
-        </h3>
+        <h3 class="content-story" id="p-6"></h3>
 
-        <p class="content-story">
-            {{story.p_7_value}}
-        </p>
+        <p class="content-story" id="p-7"></p>
 
-        <p class="content-story">
-            {{story.p_8_value}}
-        </p>
+        <p class="content-story" id="p-8"></p>
 
-        <p class="content-story">
-            {{story.p_9_value}}
-        </p>
+        <p class="content-story" id="p-9"></p>
 
-        <p class="content-story">
-            {{story.p_10_value}}
-        </p>
+        <p class="content-story" id="p-10"></p>
 
     </div>
 
     <footer class="footer">
-        @Copyright {{new Date().getFullYear()}}
+
     </footer>
 
 </div>

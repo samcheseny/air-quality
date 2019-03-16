@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha ./test/**/*.spec.js",
-    "build": "webpack",
+    "build": "npx webpack",
     "watch": "npm run build -- --watch",
     "production": "NODE_ENV=production webpack"
   },
