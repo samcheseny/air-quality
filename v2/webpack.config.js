@@ -9,11 +9,6 @@ module.exports = {
 
     optimization: {
         minimizer: [
-            new UglifyJsPlugin({
-                cache: true,
-                parallel: true,
-                sourceMap: true
-            }),
             new OptimizeCSSAssetsPlugin({})
         ]
     },
@@ -38,7 +33,9 @@ module.exports = {
                 use: [
                     {
                         loader: MiniCssExtractPlugin.loader,
-                        options: {}
+                        options: {
+
+                        }
                     },
                     {
                         loader: "css-loader",
@@ -49,6 +46,15 @@ module.exports = {
                         options: {}
                     }
                 ]
+            },
+            {
+                test: /\.(png|jpg|gif)$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {},
+                    },
+                ],
             },
             {
                 test: /\.js$/,

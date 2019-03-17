@@ -12,7 +12,7 @@
 
 <script>
 
-    import Doughnut from '../classes/doughnut';
+    import Doughnut from '../utils/doughnut';
 
     export default {
         name: 'Chart',

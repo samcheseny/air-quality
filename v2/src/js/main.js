@@ -1,6 +1,7 @@
-import Doughnut from 'utils/doughnut';
+import Doughnut from './utils/doughnut';
 import english from '../../data/english';
 import hindi from '../../data/hindi';
+import img from '../../assets/images/cigarette_icon.png';
 
 //Assign english and hindi to variables
 let article = english;
@@ -47,19 +48,22 @@ function loadData(article, selectedCity) {
     getCities().forEach(city => {
         let option = document.createElement('option');
         option.appendChild(document.createTextNode(city.name));
-        option.value = city;
+        option.value = JSON.stringify(city);
         cityPicker.appendChild(option);
     });
 
     //Load initial selected city data
     selectedCityName.innerHTML = selectedCity.name;
+    selectedCityCigarettesList.innerHTML = "";
 
     for (let index = 0; index < selectedCity.cigarettes; index++) {
         let listItem = document.createElement("li");
         let image = document.createElement("img");
         image.setAttribute("height", "55");
         image.setAttribute("width", "17");
-        image.src = "/assets/images/cigarette_icon.png";
+        image.classList.add("cigarette-icon");
+        image.src = `dist/${img}`;
+
 
         listItem.appendChild(image);
         selectedCityCigarettesList.appendChild(listItem);
@@ -72,13 +76,10 @@ function loadData(article, selectedCity) {
     paragraphThree.innerHTML = article.p_3_value;
     paragraphFour.innerHTML = article.p_4_value;
 
-    let paragraphFiveContent = document.createElement("span");
+    let paragraphFiveContent = document.getElementById("p-5-content");
     paragraphFiveContent.innerHTML = article.p_5_value;
-    //todo: check if should be innerHTML especially when languages will be switched
-    //todo: check if we should clear the DOM before appending eg selectedCityCigarettesList.innerHTML = ";
-    paragraphFive.insertBefore(paragraphFiveContent, paragraphFive.firstChild);
 
-    let paragraphFiveStrong = document.querySelector("#p-5 > strong");
+    let paragraphFiveStrong = document.getElementById("p-5-strong");
     paragraphFiveStrong.innerHTML = `* ${article["compare-tabs_1_method"]}`;
 
     paragraphSix.innerHTML = article.p_6_value;
@@ -98,6 +99,8 @@ document.addEventListener('DOMContentLoaded', () => {
 }, false);
 
 function changeTheLanguage(event) {
+
+    let article, selectedCity;
 
     if (event.target.value === "eng") {
 
@@ -123,24 +126,29 @@ function changeTheLanguage(event) {
 
     }
 
+    loadData(article, selectedCity);
 }
 
 function changeTheCity(event) {
 
     let selectedCityName = document.querySelector(".city-info > h3");
     let selectedCityCigarettesList = document.getElementById("cigarettes");
-    let city = event.target.value;
+    let city = JSON.parse(event.target.value);
+
+    console.log(city);
 
     //Load initial selected city data
     selectedCityName.innerHTML = city.name;
-    //todo: check if we should clear the DOM before appending eg selectedCityCigarettesList.innerHTML = ";
+
+    selectedCityCigarettesList.innerHTML = "";
 
     for (let index = 0; index < city.cigarettes; index++) {
         let listItem = document.createElement("li");
         let image = document.createElement("img");
         image.setAttribute("height", "55");
         image.setAttribute("width", "17");
-        image.src = "/assets/images/cigarette_icon.png";
+        image.classList.add("cigarette-icon");
+        image.src = `dist/${img}`;
 
         listItem.appendChild(image);
         selectedCityCigarettesList.appendChild(listItem);
@@ -186,3 +194,5 @@ function canvas(selectedCity) {
 
 }
 
+
+loadData(article, selectedCity);
